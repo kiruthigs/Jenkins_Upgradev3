@@ -17,15 +17,6 @@ pipeline {
           '''
         }
       }
-stage('Debug Maven Settings') {
-    steps {
-        bat '''
-        echo USERPROFILE=%USERPROFILE%
-        dir %USERPROFILE%\\.m2
-        type %USERPROFILE%\\.m2\\settings.xml
-        '''
-    }
-}
 
       stage('Unit Test') {
         steps {
@@ -41,7 +32,7 @@ stage('Debug Maven Settings') {
         steps {
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
           echo 'Mention your Application Build Code here!!!'
-          bat 'mvn -f java-tomcat-sample/pom.xml clean package'
+          
         }
       }
     }
