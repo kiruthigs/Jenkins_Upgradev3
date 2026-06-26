@@ -27,6 +27,17 @@ pipeline {
         }
       }
 
+stage('Debug Maven Settings') {
+    steps {
+        bat '''
+        echo USERPROFILE=%USERPROFILE%
+        dir %USERPROFILE%\\.m2
+        type %USERPROFILE%\\.m2\\settings.xml
+        '''
+    }
+}
+
+
       stage('Build') {
         steps {
           echo "Building version: ${VERSION} with suffix: ${RELEASE_VERSION}"
