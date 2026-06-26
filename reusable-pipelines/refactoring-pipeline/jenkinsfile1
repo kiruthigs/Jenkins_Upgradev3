@@ -6,6 +6,15 @@ pipeline {
       RELEASE_VERSION = 'R.2'
     }
 
+stage('Debug Maven Settings') {
+    steps {
+        bat '''
+        echo USERPROFILE=%USERPROFILE%
+        dir %USERPROFILE%\\.m2
+        type %USERPROFILE%\\.m2\\settings.xml
+        '''
+    }
+}
     stages {
       stage('Audit tools') {
         steps {
@@ -26,17 +35,6 @@ pipeline {
           }
         }
       }
-
-stage('Debug Maven Settings') {
-    steps {
-        bat '''
-        echo USERPROFILE=%USERPROFILE%
-        dir %USERPROFILE%\\.m2
-        type %USERPROFILE%\\.m2\\settings.xml
-        '''
-    }
-}
-
 
       stage('Build') {
         steps {
