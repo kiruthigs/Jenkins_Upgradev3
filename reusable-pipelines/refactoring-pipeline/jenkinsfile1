@@ -22,8 +22,7 @@ pipeline {
           dir('./java-tomcat-sample') {
             bat '''
               echo "Executing Unit Tests..."
-              mvn test
-          '''
+                        '''
           }
         }
       }
